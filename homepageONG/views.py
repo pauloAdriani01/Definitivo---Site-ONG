@@ -1,14 +1,14 @@
 from django.views.generic import TemplateView
 
-class MyTemplateView(TemplateView):
+class homepageView(TemplateView):
     template_name = 'homepage.html'
 
-class MyTemplateView(TemplateView):
+class quemSomosView(TemplateView):
     template_name = 'quemSomos.html'
 
-class MyTemplateView(TemplateView):
+class oqueFazemosView(TemplateView):
     template_name = 'oqueFazemos.html'
 
-class MyTemplateView(TemplateView):
+class doacoesView(TemplateView):
     template_name = 'doacoes.html'
     
