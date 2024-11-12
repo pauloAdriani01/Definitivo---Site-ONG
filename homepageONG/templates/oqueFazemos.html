@@ -1,29 +1,53 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG - O Que Fazemos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Parque da Seringueira - O que fazemos?</title>
     <link rel="stylesheet" href="{% static 'css/CSSoqueFazemos.css' %}">
 </head>
+
 <body>
-    <header id="navPrincipal">
-        <img src="{% static 'img/logo.png' %}" id="logoONG">
-        <div id="linksNav">
-            <a href="{% url 'homepage' %}">Início</a>
-            <a href="{% url 'quemSomos' %}">Quem somos?</a>
-            <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
-            <a href="{% url 'doacoes' %}">Doações</a>
-        </div>
+
+    <header>
+        <nav id="barraNavegacao">
+            <div id="titulo">
+                <h1>ONG Parque da Seringueira</h1>
+            </div>
+            <div id="links">
+                <a href="{% url 'homepage' %}">Início</a>
+                <a href="{% url 'quemSomos' %}">Quem somos?</a>
+                <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
+                <a href="{% url 'doacoes' %}">Doações</a>
+            </div>
+        </nav>
     </header>
+
     <main>
-    <h1>O que fazemos?</h1>
+        <div id="conteudo">
+            <h2>O que fazemos?</h2>
+            <div class="paragrafoImagem">
+                <p class="paragrafos"> Algumas das atividades promovidas pela ONG estão listadas abaixo:
+                </p>
+                <div class="lista">
+                    <ul>
+                        <li>Organização de eventos comunitários.</li>
+                        <li>Melhorias em infraestrutura local.</li>
+                        <li>Promoção de atividades culturais e recreativas.</li>
+                        <li>Defesa dos interesses dos moradores perante as autoridades.</li>
+                    </ul>
+                </div>
+            </div>
+    </main>
+
     <footer>
         <div id="linksRedes">
             <a href="https://wa.me/5511937195895" class="contact-link">Nosso Telefone: +55 11 93719-5895</a>
             <span>|</span>
-            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso Instagram: @cpx.parquedaseringueira</a>
+            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso
+                Instagram: @cpx.parquedaseringueira</a>
         </div>
         <div id="endereco">
             <p>Endereço:</p>
@@ -31,4 +55,5 @@
         </div>
     </footer>
 </body>
+
 </html>

@@ -11,4 +11,7 @@ class oqueFazemosView(TemplateView):
 
 class doacoesView(TemplateView):
     template_name = 'doacoes.html'
+
+class testeView(TemplateView):
+    template_name = 'teste.html'
     

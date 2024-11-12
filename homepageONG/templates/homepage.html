@@ -1,37 +1,60 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG - Início</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Parque da Seringueira - Início</title>
     <link rel="stylesheet" href="{% static 'css/CSShomepage.css' %}">
 </head>
+
 <body>
-    <header id="navPrincipal">
-        <img src="{% static 'img/logo.png' %}" id="logoONG">
-        <div id="linksNav">
-            <a href="{% url 'homepage' %}">Início</a>
-            <a href="{% url 'quemSomos' %}">Quem somos?</a>
-            <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
-            <a href="{% url 'doacoes' %}">Doações</a>
-        </div>
+
+    <header>
+        <nav id="barraNavegacao">
+            <div id="titulo">
+                <h1>ONG Parque da Seringueira</h1>
+            </div>
+            <div id="links">
+                <a href="{% url 'homepage' %}">Início</a>
+                <a href="{% url 'quemSomos' %}">Quem somos?</a>
+                <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
+                <a href="{% url 'doacoes' %}">Doações</a>
+            </div>
+        </nav>
     </header>
+
     <main>
-    <h1>Seja bem-vindo(a) ao WebSite da ONG do Parque da Seringueira!</h1>
-    <p class="paragrafos">
-        A ONG do Parque da Seringueira é uma organização voltada para o bem-estar social, 
-        promovendo iniciativas que impactam positivamente a comunidade local! 
-    </p>
-    <p class="paragrafos">
-        Nosso objetivo é transformar a vida dos moradores e criar um ambiente mais justo e sustentável
-    </p>
+        <div id="conteudo">
+            <h2>Bem vindo(a) ao WebSite da ONG Parque da Seringueira!</h2>
+            <div class="paragrafoImagem">
+                <p class="paragrafos"> A ONG do Parque da Seringueira é uma organização sem fins lucrativos dedicada ao
+                    bem-estar social e ao desenvolvimento sustentável. Seu trabalho é focado em promover ações e
+                    iniciativas que tenham um impacto positivo direto na comunidade local, com o objetivo de melhorar a
+                    qualidade de vida dos moradores e contribuir para o fortalecimento da cidadania.
+                </p>
+                <img src="{% static 'img/logo.png' %}" id="logoONG">
+            </div>
+            <div class="paragrafoImagem">
+                <p class="paragrafos">
+                    Por meio de uma série de programas educativos, culturais e ambientais, a ONG busca não apenas
+                    atender às necessidades mais urgentes da população, mas também fomentar a inclusão social e o
+                    empoderamento das pessoas. Suas atividades abrangem diversas áreas, como educação, saúde, meio
+                    ambiente e geração de renda, sempre com um foco especial na promoção da igualdade e da justiça
+                    social.
+                </p>
+                <img src="placeholder.jpg" alt="Placeholder Image">
+            </div>
+        </div>
     </main>
+
     <footer>
         <div id="linksRedes">
             <a href="https://wa.me/5511937195895" class="contact-link">Nosso Telefone: +55 11 93719-5895</a>
             <span>|</span>
-            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso Instagram: @cpx.parquedaseringueira</a>
+            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso
+                Instagram: @cpx.parquedaseringueira</a>
         </div>
         <div id="endereco">
             <p>Endereço:</p>

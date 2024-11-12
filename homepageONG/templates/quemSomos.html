@@ -1,37 +1,56 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG - Quem Somos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Parque da Seringueira - Quem somos?</title>
     <link rel="stylesheet" href="{% static 'css/CSSquemSomos.css' %}">
 </head>
+
 <body>
-    <header id="navPrincipal">
-        <img src="{% static 'img/logo.png' %}" id="logoONG">
-        <div id="linksNav">
-            <a href="{% url 'homepage' %}">Início</a>
-            <a href="{% url 'quemSomos' %}">Quem somos?</a>
-            <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
-            <a href="{% url 'doacoes' %}">Doações</a>
-        </div>
+
+    <header>
+        <nav id="barraNavegacao">
+            <div id="titulo">
+                <h1>ONG Parque da Seringueira</h1>
+            </div>
+            <div id="links">
+                <a href="{% url 'homepage' %}">Início</a>
+                <a href="{% url 'quemSomos' %}">Quem somos?</a>
+                <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
+                <a href="{% url 'doacoes' %}">Doações</a>
+            </div>
+        </nav>
     </header>
+
     <main>
-        <h1>Quem somos?</h1>
-        <p class="paragrafos">
-            A associação de moradores do Parque da Seringueira é uma organização comunitária que representa os
-            interesses dos moradores de uma determinada área. 
-        </p>
-        <p class="paragrafos">
-            Ela é responsável por diversas atividades e projetos
-            voltados para o bem-estar da comunidade
-        </p>
+        <div id="conteudo">
+            <h2>Quem somos?</h2>
+            <div class="paragrafoImagem">
+                <p class="paragrafos"> A associação de moradores do Parque da Seringueira é uma organização comunitária
+                    que representa os interesses dos moradores de uma determinada área. Ela é responsável por diversas
+                    atividades e projetos voltados para o bem-estar da comunidade!
+                </p>
+                <div class="lista">
+                    <ul>
+                        <li>Organização de eventos comunitários.</li>
+                        <li>Melhorias em infraestrutura local.</li>
+                        <li>Promoção de atividades culturais e recreativas.</li>
+                        <li>Defesa dos interesses dos moradores perante as autoridades.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <footer>
         <div id="linksRedes">
             <a href="https://wa.me/5511937195895" class="contact-link">Nosso Telefone: +55 11 93719-5895</a>
             <span>|</span>
-            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso Instagram: @cpx.parquedaseringueira</a>
+            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso
+                Instagram: @cpx.parquedaseringueira</a>
         </div>
         <div id="endereco">
             <p>Endereço:</p>
@@ -39,4 +58,5 @@
         </div>
     </footer>
 </body>
+
 </html>
