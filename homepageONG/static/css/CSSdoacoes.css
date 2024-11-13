@@ -79,6 +79,54 @@ h2 {
     border-radius: 8px;
 }
 
+.lista ul {
+    list-style: none;  
+    padding-left: 0;    
+    margin-top: 20px;
+    margin-left: 0px;
+}
+
+.lista ul li {
+    position: relative;  
+    font-size: 18px;      
+    line-height: 1.6;
+    color: #444;          
+    padding-left: 30px;  
+    margin-bottom: 10px;  
+    transition: color 0.3s, transform 0.3s;  
+}
+
+.lista ul li:hover {
+    color: #00796b; 
+    transform: translateX(5px); 
+}
+
+.lista ul li:before {
+    content: '\2022'; 
+    font-size: 30px;  
+    color: #00796b;   
+    position: absolute; 
+    left: 0;          
+    top: 50%;         
+    transform: translateY(-50%); 
+    transition: color 0.3s;  
+}
+
+.lista ul li:hover:before {
+    color: #ffeb3b; 
+}
+
+.doacoes {
+    height: 200px;
+    margin-left: 200px;
+    box-shadow: 0 4px 6px;
+    transition: transform 0.3s;
+}
+
+.doacoes:hover {
+    transform: scale(1.1);
+}
+
 /* FOOTER */
 
 footer {
@@ -99,7 +147,7 @@ footer {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
-    margin: 0 10px;
+    margin: 10px;
     transition: 0.3s;
 }
 
@@ -108,7 +156,7 @@ footer {
 }
 
 #endereco p {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 10px;
 }
 
