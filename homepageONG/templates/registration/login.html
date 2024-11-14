@@ -1,10 +1,16 @@
+{% load static %}
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/CSSlogin.css' %}">
 </head>
 <body>
+    <nav>
     <h1>Login</h1>
+    <a href="{% url 'homepage' %}">Voltar</a>
+    </nav>
     <form method="post">
         {% csrf_token %}
         <div>
@@ -21,6 +27,5 @@
     {% if next %}
         <p><a href="{{ next }}">Voltar à página anterior</a></p>
     {% endif %}
-    <a href="{% url 'homepage' %}">Voltar</a>
 </body>
 </html>
