@@ -7,6 +7,76 @@
     <meta name="viewport" content="width=device-width" />
     <title>Parque da Seringueira - Início</title>
     <link rel="stylesheet" href="{% static 'css/CSShomepage.css' %}">
+    <style>
+        .carrossel-container {
+    width: auto;
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px; /* Arredonda as bordas do contêiner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao contêiner */
+}
+
+.carrossel-slide {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carrossel-slide .slide-item {
+    min-width: 100%;
+    position: relative;
+}
+
+.carrossel-slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: fill;
+    border-radius: 10px; /* Arredonda as bordas das imagens */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para animações */
+}
+
+/* Adiciona um efeito de zoom e uma sombra ao passar o mouse */
+.carrossel-slide img:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente a imagem */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+.botao-prev, .botao-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%; /* Botões em formato circular */
+    z-index: 10;
+}
+
+.botao-prev {
+    left: 10px;
+}
+
+.botao-next {
+    right: 10px;
+}
+
+/* Personaliza o botão de exclusão no carrossel */
+.botao-excluir {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    z-index: 10;
+}
+    </style>
 </head>
 
 <body>
@@ -21,6 +91,15 @@
                 <a href="{% url 'quemSomos' %}">Quem somos?</a>
                 <a href="{% url 'oqueFazemos' %}">O que fazemos?</a>
                 <a href="{% url 'doacoes' %}">Doações</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'AreaAdm' %}">Área do Administrador</a>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Sair</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
             </div>
         </nav>
     </header>
@@ -44,7 +123,23 @@
                     ambiente e geração de renda, sempre com um foco especial na promoção da igualdade e da justiça
                     social.
                 </p>
-                <img src="{% static 'img/pessoalONG.png' %}" id="pessoalONG">
+                <div class="carrossel-container">
+                    <div class="carrossel-slide">
+                        {% for imagem in imagens %}
+                        <div class="slide-item">
+                            <img src="{{ imagem.imagem.url }}" alt="{{ imagem.nome }}">
+                            {% if user.is_superuser %}
+                            <form method="post" action="{% url 'DeletarImagem' pk=imagem.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="botao-excluir">Excluir</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="botao-prev" onclick="moveSlide(-1)">&#10094;</button>
+                    <button class="botao-next" onclick="moveSlide(1)">&#10095;</button>
+                </div>
             </div>
         </div>
     </main>
@@ -52,12 +147,33 @@
     <footer>
         <div id="linksRedes">
             <a href="https://wa.me/5511937195895" class="contact-link">Nosso Telefone: +55 11 93719-5895</a>
-            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso Instagram: @cpx.parquedaseringueira</a>
+            <a href="https://www.instagram.com/cpx.parquedaseringueira?utm_source=qr&igsh=ZGgybDYzejEyNmN5">Nosso
+                Instagram: @cpx.parquedaseringueira</a>
         </div>
         <div id="endereco">
             <p>Endereço:</p>
             <p>Rua da Seringueira, 106 - Parque das Seringueiras - CEP: 07190-230 | Guarulhos - SP </p>
         </div>
     </footer>
+    <script>
+        let currentIndex = 0;
+
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll('.carrossel-slide .slide-item');
+            const totalSlides = slides.length;
+
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            }
+
+            const offset = -currentIndex * 100;
+            document.querySelector('.carrossel-slide').style.transform = `translateX(${offset}%)`;
+        }
+    </script>
 </body>
+
 </html>

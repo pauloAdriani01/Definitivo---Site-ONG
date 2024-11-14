@@ -1,23 +1,24 @@
-"""
-URL configuration for testeSiteONG project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+from homepageONG.views import homepageView, quemSomosView, oqueFazemosView, doacoesView, testeView, UploadImagemView, DeletarImagemView, CriacaoSuperUsuarioView, AreaAdmView,CarrosselView
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('homepageONG.urls'))
+    path('', homepageView.as_view(template_name='homepage.html'), name='homepage'),
+    path('quemSomos', quemSomosView.as_view(template_name='quemSomos.html'), name='quemSomos'),
+    path('oqueFazemos', oqueFazemosView.as_view(template_name='oqueFazemos.html'), name='oqueFazemos'),
+    path('doacoes', doacoesView.as_view(template_name='doacoes.html'), name='doacoes'),
+    path('teste', testeView.as_view(template_name='teste.html'), name='teste'),
+    path('admin/', AreaAdmView.as_view(), name='AreaAdm'),
+    path('admin/upload/', UploadImagemView.as_view(), name='UploadImagem'),
+    path('imagens/deletar/<int:pk>/', DeletarImagemView.as_view(), name='DeletarImagem'),
+    path('admin/criarsuperusuario/', CriacaoSuperUsuarioView.as_view(), name='CriacaoSuperUsuario'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('carrossel/', CarrosselView.as_view(), name='carrossel'),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,26 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_username">Nome de usuário:</label>
+            {{ form.username }}
+        </div>
+        <div>
+            <label for="id_password">Senha:</label>
+            {{ form.password }}
+        </div>
+        <button type="submit">Entrar</button>
+    </form>
+
+    {% if next %}
+        <p><a href="{{ next }}">Voltar à página anterior</a></p>
+    {% endif %}
+    <a href="{% url 'homepage' %}">Voltar</a>
+</body>
+</html>

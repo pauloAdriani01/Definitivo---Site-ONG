@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Upload de Imagens</title>
+    <link rel="stylesheet" href="{% static 'css/CSSUploadImagem.css' %}">
+</head>
+
+<body>
+    <nav>
+        <h1>Upload de imagem</h1>
+        <a href="{% url 'AreaAdm' %}">Voltar para a Área do Administrador</a>
+    </nav>
+    <div>
+    <form method="post" enctype="multipart/form-data" class="formulario">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar</button>
+    </form>
+    </div>
+</body>
+
+</html>

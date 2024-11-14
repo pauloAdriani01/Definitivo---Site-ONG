@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Área Administrativa</title>
+    <link rel="stylesheet" href="{% static 'css/CSSAreaAdm.css' %}">
+</head>
+
+<body>
+    <nav>
+        <h1>Área Administrativa</h1>
+        <a href="{% url 'homepage' %}">Voltar para a página inicial</a>
+    </nav>
+    <!-- Seção de upload de imagens -->
+     <div class="container">
+     <div class="bloco">
+    <a href="{% url 'UploadImagem' %}">Fazer Upload de Imagem</a>
+    </div>
+    <div class="bloco">
+    <a href="{% url 'CriacaoSuperUsuario' %}">Criar Superusuário</a>
+    </div>
+    </div>
+</body>
+
+</html>

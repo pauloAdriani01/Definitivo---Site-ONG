@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -104,12 +105,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'pt-BR'
+LANGUAGE_CODE = "pt-br"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "America/Sao_Paulo"
 
 USE_I18N = True
-
+USE_L1ON = True
 USE_TZ = True
 
 
@@ -122,3 +123,19 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGIN_URL = 'login'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',
+    'https://127.0.0.1:8000'
+]
+
+LOGIN_REDIRECT_URL = '/admin/'  
+LOGOUT_REDIRECT_URL = '/'  
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
